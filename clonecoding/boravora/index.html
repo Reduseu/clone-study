@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React JS</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  const root = document.getElementById('root');
+  function Title () {
+    return (
+      <h3 id = "title" onMouseEnter= {() => console.log('mouse enter')}>
+        Hello World!
+      </h3>
+    );
+  };
+  /* const h3 =  React.createElement(
+      'h3', 
+      {
+        id: 'title',
+        onMouseEnter: () => console.log('mouse enter'),
+      }, 
+      'Hello World!'
+  ); */
+  const Button = () => (
+    <button 
+      style= {{ 
+        background: 'aqua', 
+      }} 
+      onClick={() => console.log('Im clicked')}>
+      Click me
+    </button>
+  );
+  /* const btn = React.createElement(
+      'button', 
+      {
+        onClick: () => console.log('Im clicked'),
+        style: { background: 'aqua', }
+      }, 
+      'Click me'
+  ); */
+  // const container = React.createElement('div', null, [Title, Button]);
+  const Container = () => ( 
+    <div>
+      <Title />
+      <Button />
+    </div>
+  );
+  // component의 첫글자는 반드시 대문자여야한다. 소문자이면 JSX는 element라고 생각함(⭐️⭐️⭐️⭐️⭐️)
+  ReactDOM.render(<Container />, root)
+</script>
+</html>
