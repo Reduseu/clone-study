@@ -16,10 +16,13 @@
 
 <script type="text/babel">
   const root = document.getElementById('root');
-  const Title = (
-    <h3 id = "title" onMouseEnter= {() => console.log('mouse enter')}>
-      Hello World!
-    </h3>);
+  function Title () {
+    return (
+      <h3 id = "title" onMouseEnter= {() => console.log('mouse enter')}>
+        Hello World!
+      </h3>
+    );
+  };
   /* const h3 =  React.createElement(
       'h3', 
       {
@@ -27,15 +30,16 @@
         onMouseEnter: () => console.log('mouse enter'),
       }, 
       'Hello World!'
-    ); */
-  const Button = (
+  ); */
+  const Button = () => (
     <button 
       style= {{ 
         background: 'aqua', 
       }} 
       onClick={() => console.log('Im clicked')}>
       Click me
-    </button>);
+    </button>
+  );
   /* const btn = React.createElement(
       'button', 
       {
@@ -43,8 +47,15 @@
         style: { background: 'aqua', }
       }, 
       'Click me'
-    ); */
-  const container = React.createElement('div', null, [Title, Button])
-  ReactDOM.render(container, root)
+  ); */
+  // const container = React.createElement('div', null, [Title, Button]);
+  const Container = () => ( 
+    <div>
+      <Title />
+      <Button />
+    </div>
+  );
+  // component의 첫글자는 반드시 대문자여야한다. 소문자이면 JSX는 element라고 생각함(⭐️⭐️⭐️⭐️⭐️)
+  ReactDOM.render(<Container />, root)
 </script>
 </html>
