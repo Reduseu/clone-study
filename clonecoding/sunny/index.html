@@ -8,13 +8,17 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    const Title = (<h3 id="title" onmouseenter={() => console.log("mouse enter")}>Hello I'm a span</h3>);
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>Hello I'm a title</h3>
+        );
+    }
     /*
     const h3 = React.createElement("h3", { id: "title",
       onmouseenter: () => console.log("mouse enter"),
     }, "Hello I'm a span");
     */
-    const Button = (
+    const Button = () => (
       <button style={{backgroundColor: "tomato",}}
       onClick={() => console.log("im clicked")}>
       Click me
@@ -28,8 +32,15 @@
       }
     }, "Click me");
     */
+    const Container = () => (
+      <div>
+      <Title />
+      <Button />
+      </div>
+    );
+    /*
     const container = React.createElement("div", null, [Title, Button]);
-    ReactDOM.createRoot(root).render(container)
-    
+    */
+    ReactDOM.render(<Container />, root);
   </script>
 </html> 
