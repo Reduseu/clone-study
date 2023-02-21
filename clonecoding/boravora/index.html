@@ -15,47 +15,23 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel">
-  const root = document.getElementById('root');
-  function Title () {
-    return (
-      <h3 id = "title" onMouseEnter= {() => console.log('mouse enter')}>
-        Hello World!
-      </h3>
+  function App() {
+    const [minutes, setMinutes] = React.useState()
+    const onChange = (event) => {
+      setMinutes(event.target.value);
+    }
+    return(
+      <div>
+        <h1 className = "hi" >Super Converter</h1>
+        <label htmlFor = "minutes" >Minutes</label>
+        <input value = {minutes} id = "minutes" placeholder = "Minutes" type = "number" onChange = {onChange} />
+        <h4>You want to convert {minutes}</h4>
+        <label htmlFor = "hours" >Hours</label>
+        <input id = "hours" placeholder = "Hours" type = "number" />
+      </div>
     );
-  };
-  /* const h3 =  React.createElement(
-      'h3', 
-      {
-        id: 'title',
-        onMouseEnter: () => console.log('mouse enter'),
-      }, 
-      'Hello World!'
-  ); */
-  const Button = () => (
-    <button 
-      style= {{ 
-        background: 'aqua', 
-      }} 
-      onClick={() => console.log('Im clicked')}>
-      Click me
-    </button>
-  );
-  /* const btn = React.createElement(
-      'button', 
-      {
-        onClick: () => console.log('Im clicked'),
-        style: { background: 'aqua', }
-      }, 
-      'Click me'
-  ); */
-  // const container = React.createElement('div', null, [Title, Button]);
-  const Container = () => ( 
-    <div>
-      <Title />
-      <Button />
-    </div>
-  );
-  // component의 첫글자는 반드시 대문자여야한다. 소문자이면 JSX는 element라고 생각함(⭐️⭐️⭐️⭐️⭐️)
-  ReactDOM.render(<Container />, root)
+  }
+  const root = document.getElementById('root');
+  ReactDOM.render(<App />, root);
 </script>
 </html>
