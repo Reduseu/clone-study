@@ -16,7 +16,7 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel">
-  function Btn({text, fontSize}) {
+  function Btn({text, fontSize = 12}) {
     return (
       <button
         style={{
@@ -32,14 +32,14 @@
     );
   }
   Btn.propTypes = {
-    text: PropTypes.string,
-    fontSize: PropTypes.number,
+    text: PropTypes.string.isRequired,
+    fontSize: PropTypes.number     ,
   }
   function App() {
     return (
       <div>
         <Btn text = "Save Changes" fontSize = {18} />
-        <Btn fontSize = {14} text = {"continue"} />
+        <Btn text = {"continue"} />
       </div>
     );
   }
