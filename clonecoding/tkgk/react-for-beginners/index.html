@@ -9,21 +9,20 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   const root = document.getElementById('root');
-  let counter = 0;
-  function countUp(){
-    counter = counter + 1;
-    render();
-  }
-  function render(){
-    ReactDOM.render(<Container />, root);
-  }
+  
 
-  const Container = () => (
-    <div>
-      <h3>total clicks: {counter}</h3>
-      <button onClick={countUp}>click me</button>
-    </div>) // Container도 컴포넌트라서 첫글자 대문자?
-    render();
+  function App() {
+    const [counter, modifier] = React.useState(0);
+    console.log(data);
+
+    return (
+      <div>
+        <h3>total clicks: 0</h3>
+        <button>click me</button>
+      </div>
+      )
+  }
+    ReactDOM.render(<App />, root);
 </script>
 
 </html>
