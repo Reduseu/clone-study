@@ -8,63 +8,26 @@
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-  const root = document.getElementById('root');
-  function MinutesToHours() {
-    const [amount, setAmount] = React.useState();
-    const [inverted, setInverted] = React.useState(false);
-    const onChange=(e)=>{
-      setAmount(e.target.value);
-      console.log(e.target.value);
-    }
-
-    const reset = () => setAmount(0);
-    const onFlip = () => {
-      reset();
-      setInverted(current => !current);
-    }
-    
-    return (
-      <div>
-        <div>
-          <label htmlFor="minutes">minutes</label>
-          <input id='minutes' type="number" placeholder='minutes' 
-          value={inverted ? amount*60 : amount} onChange={onChange} disabled={inverted} />
-        </div>
-        <div>
-          <label htmlFor="hours">hours</label>
-          <input id='hours' type="number" placeholder='hours' value={inverted ? amount : Math.round(amount / 60)} onChange={onChange} disabled={!inverted} />
-        </div>
-        <button onClick={reset}>reset</button>
-        <button onClick={onFlip}>{inverted ? 'turn back' : 'invert'}</button>
-      </div>
-      )
-  }
-  function KmToMiles(){
-    return (
-      <div>KM 2M</div>
-    )
+  function Btn({text, big}){
+    return <button style={{
+      backgroundColor: 'tomato',
+      color: 'white',
+      padding: '10px 20px',
+      border: 0,
+      borderRadius: 10,
+      fontSize: big ? 18 : 16,
+    }}>{text}</button>
   }
   function App() {
-    const [index, setIndex] = React.useState('xx');
-    const onSelect = (e)=>{
-      setIndex(e.target.value);
-    }
     return (
       <div>
-        <h1>super converter</h1>
-        <select value={index} onChange={onSelect}>
-          <option value="xx">Select your units</option>
-          <option value="0">Minutes & Hours</option>
-          <option value="1">Km & Miles</option>
-        </select>
-        <hr />
-        {index === 'xx' ? 'please select your units' : null}
-        {index === '0' ? <MinutesToHours /> : null}
-        {index === '1' ? <KmToMiles /> : null}
+        <Btn text='Save Change' big={true} />
+        <Btn text='Continue' big={false} />
       </div>
-      )
+    )
   }
-    ReactDOM.render(<App />, root);
+  const root = document.getElementById('root');
+  ReactDOM.render(<App />, root);
 </script>
 
 </html>
