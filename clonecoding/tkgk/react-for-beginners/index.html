@@ -16,15 +16,23 @@
       setMinutes(e.target.value);
       console.log(e.target.value);
     }
+
+    function reset(){
+      setMinutes(0);
+    }
     
     return (
       <div>
         <h1 className='hi'>super converter</h1>
-        <label htmlFor="minutes">minutes</label>
-        <input id='minutes' type="number" placeholder='minutes' value={minutes} onChange={onChange} />
-        <h4>you want to convert {minutes}</h4>
-        <label htmlFor="hours">hours</label>
-        <input id='hours' type="number" placeholder='hours' />
+        <div>
+          <label htmlFor="minutes">minutes</label>
+          <input id='minutes' type="number" placeholder='minutes' value={minutes} onChange={onChange} />
+        </div>
+        <div>
+          <label htmlFor="hours">hours</label>
+          <input id='hours' type="number" placeholder='hours' value={Math.round(minutes / 60)} />
+        </div>
+        <button onClick={reset}>reset</button>
       </div>
       )
   }
